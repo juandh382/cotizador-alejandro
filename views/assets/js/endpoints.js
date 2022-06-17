@@ -11,5 +11,6 @@ const DOMAIN = "http://localhost";
 
 /* ================================================================= */
 
-const QUOTES_VIEW = `${DOMAIN}/cotizaciones/views/cotizaciones.php`;
+const CONSULT_QUOTES_VIEW = `${DOMAIN}/cotizaciones/views/cotizaciones.php`;
 const ARCHIVES_CONTROLLER = `${DOMAIN}/cotizaciones/controllers/ArchivesController.php`;
+const USER_CONTROLLER = `${DOMAIN}/cotizaciones/controllers/usuario.php`;

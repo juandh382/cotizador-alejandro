@@ -55,7 +55,7 @@ function submitForm(e) {
 
     resetForm();
   });
-  xml.open("POST", "https://www.stbmsgingenieria.cl/cotizaciones/controllers/usuario.php");
+  xml.open("POST", USER_CONTROLLER);
   xml.send(formData);
 }
 
@@ -88,10 +88,10 @@ async function getLastUserSaved() {
   formData.append("get_last_user_saved", true);
 
   try {
-    const res = await fetch(
-      "https://www.stbmsgingenieria.cl/cotizaciones/controllers/usuario.php",
-      { method: "POST", body: formData }
-    );
+    const res = await fetch(USER_CONTROLLER, {
+      method: "POST",
+      body: formData,
+    });
 
     const { response } = await res.json();
 
@@ -144,13 +144,10 @@ async function getUserDataById(id) {
   data.append("get_all_by_id", true);
   data.append("id", id);
   try {
-    const res = await fetch(
-      "https://www.stbmsgingenieria.cl/cotizaciones/controllers/usuario.php",
-      {
-        method: "post",
-        body: data,
-      }
-    );
+    const res = await fetch(USER_CONTROLLER, {
+      method: "post",
+      body: data,
+    });
     const { response } = await res.json();
 
     return response;

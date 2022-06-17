@@ -3,7 +3,7 @@ quoteForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(quoteForm);
   data.append("submit", true);
-  fetch(QUOTES_VIEW, {
+  fetch(CONSULT_QUOTES_VIEW, {
     method: "POST",
     body: data,
   })
