@@ -19,30 +19,30 @@ if(isset($_GET['error']) && ($_GET['error'] == 2)){
     <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/Waterfalls-Scenery-Wallpaper-1.jpg">
+    <link rel="shortcut icon" href="assets/img/Waterfalls-Scenery-Wallpaper-1.jpg">
 
     <title>Iniciar sesión</title>
     <!-- Bootstrap W3Schools -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/assets/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <!-- Bootstrap CSS -->     
-  <!--  <link href="css/bootstrap.min.css" rel="stylesheet">  -->
+  <!--  <link href="assets/css/bootstrap.min.css" rel="stylesheet">  -->
     <!-- bootstrap theme -->
-    <link href="css/bootstrap-theme.css" rel="stylesheet">   
+    <link href="assets/css/bootstrap-theme.css" rel="stylesheet">   
     <!--external css-->
     <!-- font icon -->
-    <link href="css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom styles -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
     <![endif]-->
 </head>
 

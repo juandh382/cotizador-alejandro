@@ -1,5 +1,7 @@
 <?php
 
+require_once '../config/constants.php';
+
 if (isset($_GET['id']) && $_GET['id'] !== '') {
 
     require_once '../Controlador/ArchivesController.php';
@@ -11,14 +13,13 @@ if (isset($_GET['id']) && $_GET['id'] !== '') {
     if ($result) {
         header('content-type: ' . $result['tipo']);
         readfile('upload/' . $result['ruta']);
-    } else {
+    }
+    else {
 
-        // header('location: index.php');
-        echo '<script>window.location = "https://www.stbmsgingenieria.cl/cotizaciones/Vista/index.php" </script>';
+        echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php" </script>';
     }
 
 }
 else {
-    // header('location: index.php');
-    echo '<script>window.location = "https://www.stbmsgingenieria.cl/cotizaciones/Vista/index.php" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php" </script>';
 }

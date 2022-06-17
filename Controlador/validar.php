@@ -2,7 +2,7 @@
 
 session_start();
 
- /* echo "hola mundo";  */
+require('../config/constants.php');
 require('../Modelo/Conexion.php');
 
 /* Crear objeto de esta clase */
@@ -28,12 +28,7 @@ if ($objUsuario){
     $sesion = new sesion();
     $sesion->iniciar(); 
   
-     
-    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/Vista/index.php?'.SID);
-    // var_dump($_SESSION);
-    // exit;
-    
-    echo '<script>window.location = "https://www.stbmsgingenieria.cl/cotizaciones/Vista/index.php" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php" </script>';
 
     
     exit;  
@@ -42,8 +37,7 @@ if ($objUsuario){
 }else{
    /* echo "Login fail!!";  */
 
-    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/Vista/login.php?error=1');   
-    echo '<script>window.location = "https://www.stbmsgingenieria.cl/cotizaciones/Vista/login.php?error=1" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/login.php?error=1" </script>';
     exit;
 };
 

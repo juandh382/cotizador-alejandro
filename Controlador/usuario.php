@@ -1,5 +1,6 @@
 <?php
 
+require('../config/constants.php');
 require('../Modelo/Conexion.php');
 $db = new Conexion();
 $db->conn();
@@ -35,13 +36,11 @@ if (isset($_POST['get_all_by_id'])) {
 if (isset($_GET['accion']) && $_GET['accion'] == 'eliminar') {
 
   if ($usuario->eliminar($_GET['idUsuario'])) {
-    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/Vista/usuarios.php?eliminar=true');
-    echo '<script>window.location = "https://www.stbmsgingenieria.cl/cotizaciones/Vista/usuarios.php?eliminar=true" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/usuarios.php?eliminar=true" </script>';
     exit;
   }
   else {
-    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/Vista/usuarios.php?eliminar=false');
-    echo '<script>window.location = "https://www.stbmsgingenieria.cl/cotizaciones/Vista/usuarios.php?eliminar=false" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/usuarios.php?eliminar=false" </script>';
     exit;
   }
 

@@ -2,15 +2,17 @@
 
 session_start();
 
+require('../config/constants.php');
 require('../Modelo/sesion.class.php');
+
 $sesion = new sesion();
+
 if (!$sesion->validar()) {
-    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/Vista/login.php?error=2');
-    echo '<script>window.location = "https://www.stbmsgingenieria.cl/cotizaciones/Vista/index.php?error=2" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php?error=2" </script>';
     exit;
 }
 
-else {
+
 
 
     require('../Modelo/Conexion.php');
@@ -27,142 +29,18 @@ else {
 
     $perfil = $usuario->getUserProfile($user);
 
-}
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/Waterfalls-Scenery-Wallpaper-1.jpg">
-
-    <title>Sistema Cotizaciones</title>
-
-
-    <!-- Bootstrap W3Schools -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- DT -->
-    <!-- ✅ Load CSS file for DataTables  -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css"
-        integrity="sha512-1k7mWiTNoyx2XtmI96o+hdjP8nn0f3Z2N4oF/9ZZRgijyV4omsKOXEnqL1gKQNPy2MTSP9rIEWGcH/CInulptA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-    <!-- ✅ load jQuery ✅ -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
-    <!-- ✅ load DataTables ✅ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
-        integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-    $(document).ready(function() {
-        var table = $('#tablaAbogados').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-            }
-        });
-    });
-    </script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- font icon -->
-    <link href="css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <!-- full calendar css-->
-    <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-    <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-    <!-- easy pie chart-->
-    <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css"
-        media="screen" />
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-    <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="css/fullcalendar.css">
-    <link href="css/widgets.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
-    <link href="css/xcharts.min.css" rel=" stylesheet">
-
-</head>
-
-<body>
+<?php require_once 'layout/head.php'; ?> 
     <!-- container section start -->
     <section id="container" class="">
 
-
-        <header class="header dark-bg">
-            <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i
-                        class="icon_menu"></i></div>
-            </div>
-
-            <!--logo start-->
-            <a href="index.php" class="logo">SISTEMA <span class="lite">COTIZACIONES</span></a>
-            <div class="col-md-2" style="left: 10px;margin-top: 8px;">
-                <h4>Bienvenido <?php echo $user; ?></h4>
-            </div>
-            <button type="button" class="btn btn-primary" style="margin-left: 980px;margin-top: 12px;"><a
-                    href="../Controlador/cerrarSesion.php?<?php echo SID; ?>" style="color: white;">Cerrar
-                    Sesión</a></button>
-            <!--logo end-->
-        </header>
-        <!--header end-->
+        <?php require_once 'layout/header.php' ?>
 
         <!--sidebar start-->
-        <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu">
-                    <li class="active">
-                        <a class="" href="index.php">
-                            <i class="icon_house_alt"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="fa fa-users"></i>
-                            <span>Cotizaciones</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="cotizaciones.php">Consultar Cotizaciones</a></li>
-
-                        </ul>
-                    </li>
-                    <?php if ($perfil == 'Administrador'): ?>
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="fa fa-users"></i>
-                                <span>Usuarios</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="usuarios.php">CRUD Usuarios</a></li>
-                                <!--  <li><a class="" href="consultarusuarios.php">Consultar Usuarios</a></li>  -->
-                            </ul>
-                        </li> 
-                    <?php endif; ?>
-
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
-        <!--sidebar end-->
+      <?php require_once 'layout/sidebar.php'; ?>
+      <!--sidebar end-->
 
         <!--main content start-->
         <section id="main-content">
@@ -302,95 +180,10 @@ foreach ($data as $value) {
     <!-- container section start -->
 
     <!-- javascripts -->
-    <script src="js/jquery-ui-1.10.4.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
-    <!-- bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- nice scroll -->
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <!-- charts scripts -->
-    <script src="assets/jquery-knob/js/jquery.knob.js"></script>
-    <script src="js/jquery.sparkline.js" type="text/javascript"></script>
-    <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-    <script src="js/owl.carousel.js"></script>
-    <!-- jQuery full calendar -->
-    <script src="js/fullcalendar.min.js">
-    </script> <!-- Full Google Calendar - Calendar -->
-    <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
-    <!--script for this page only-->
-    <script src="js/calendar-custom.js"></script>
-    <script src="js/jquery.rateit.min.js"></script>
-    <!-- custom select -->
-    <script src="js/jquery.customSelect.min.js"></script>
-    <script src="assets/chart-master/Chart.js"></script>
 
-    <!--custome script for all page-->
-    <script src="js/scripts.js"></script>
-    <!-- custom script for this page-->
-    <script src="js/sparkline-chart.js"></script>
-    <script src="js/easy-pie-chart.js"></script>
-    <script src="js/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="js/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="js/xcharts.min.js"></script>
-    <script src="js/jquery.autosize.min.js"></script>
-    <script src="js/jquery.placeholder.min.js"></script>
-    <script src="js/gdp-data.js"></script>
-    <script src="js/morris.min.js"></script>
-    <script src="js/sparklines.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/endpoints.js"></script>
-    <script src="js/quoteForm.js"></script>
+    <script src="assets/js/endpoints.js"></script>
+    <script src="assets/js/quoteForm.js"></script>
 
 
-    <script>
-    //knob
-    $(function() {
-        $(".knob").knob({
-            'draw': function() {
-                $(this.i).val(this.cv + '%')
-            }
-        })
-    });
-
-    //carousel
-    $(document).ready(function() {
-        $("#owl-slider").owlCarousel({
-            navigation: true,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true
-
-        });
-    });
-
-    //custom select box
-
-    $(function() {
-        $('select.styled').customSelect();
-    });
-
-    /* ---------- Map ---------- */
-    $(function() {
-        $('#map').vectorMap({
-            map: 'world_mill_en',
-            series: {
-                regions: [{
-                    values: gdpData,
-                    scale: ['#000', '#000'],
-                    normalizeFunction: 'polynomial'
-                }]
-            },
-            backgroundColor: '#eef3f7',
-            onLabelShow: function(e, el, code) {
-                el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-            }
-        });
-    });
-    </script>
-
-</body>
-
-</html>
+<?php require_once 'layout/footer.php'; ?>
