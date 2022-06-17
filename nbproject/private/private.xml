@@ -14,7 +14,7 @@
             <file>file:/C:/xampp/htdocs/Cotizaciones/controllers/cerrarSesion.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/views/usuarios.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/views/cotizaciones.php</file>
-            <file>file:/C:/xampp/htdocs/Cotizaciones/models/Conexion.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/config/Conexion.php</file>
         </group>
     </open-files>
 </project-private>

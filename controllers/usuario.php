@@ -1,7 +1,7 @@
 <?php
 
 require('../config/constants.php');
-require('../models/Conexion.php');
+require('../config/Conexion.php');
 $db = new Conexion();
 $db->conn();
 require('../models/usuario.class.php');

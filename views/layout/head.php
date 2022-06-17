@@ -7,7 +7,7 @@ session_start();
 /* ========================= */
 /*      DB CONNECTION      */
 /* ========================= */
-require('../models/Conexion.php');
+require('../config/Conexion.php');
 $db = new Conexion();
 $db->conn();
 

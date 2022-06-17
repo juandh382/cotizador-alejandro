@@ -3,7 +3,7 @@
 session_start();
 
 require('../config/constants.php');
-require('../models/Conexion.php');
+require('../config/Conexion.php');
 
 /* Crear objeto de esta clase */
 $db = new Conexion();
