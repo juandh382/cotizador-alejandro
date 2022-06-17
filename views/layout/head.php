@@ -1,3 +1,39 @@
+<?php   
+
+
+session_start();
+
+
+/* ========================= */
+/*      DB CONNECTION      */
+/* ========================= */
+require('../models/Conexion.php');
+$db = new Conexion();
+$db->conn();
+
+require('../config/constants.php');
+require_once '../helpers/Utils.php';
+
+require('../models/sesion.class.php');
+
+$sesion = new sesion();
+
+if (!$sesion->validar()) {
+
+  echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/login.php?error=2" </script>';
+  exit;
+}
+
+
+require('../models/usuario.class.php');
+$usuario = new usuario();
+
+$user = $_SESSION['usuario'];
+$perfil = $usuario->getUserProfile($user);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

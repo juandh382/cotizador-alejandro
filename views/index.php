@@ -1,34 +1,5 @@
-<?php
-
-session_start();
-
-
-require('../config/constants.php');
-require('../models/sesion.class.php');
-
-$sesion = new sesion();
-
-if (!$sesion->validar()) {
-
-  echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/login.php?error=2" </script>';
-  exit;
-}
-
-require('../models/Conexion.php');
-$db = new Conexion();
-$db->conn();
-require('../models/usuario.class.php');
-$usuario = new usuario();
-$data = $usuario->obtenerUsuarios();
-$flagAlerta = false;
-
-$user = $_SESSION['usuario'];
-$perfil = $usuario->getUserProfile($user);
-
-
-?>
-
 <?php require_once 'layout/head.php'; ?>
+
   <!-- container section start -->
   <section id="container" class="">
      

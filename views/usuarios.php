@@ -1,23 +1,7 @@
+<?php require_once 'layout/head.php'; ?>
+
 <?php
-session_start();
 
-require('../config/constants.php');
-require('../models/sesion.class.php');
-
-$sesion = new sesion();
-
-if (!$sesion->validar()) {
-    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/views/login.php?error=2');
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/login.php?error=2" </script>';
-    exit;
-}
-
-
-require('../models/Conexion.php');
-$db = new Conexion();
-$db->conn();
-require('../models/usuario.class.php');
-$usuario = new usuario();
 $data = $usuario->obtenerUsuarios();
 $flagAlerta = false;
 
@@ -32,49 +16,11 @@ elseif (isset($_GET['eliminar']) && $_GET['eliminar'] == 'false') {
     $tipoAlerta = "danger";
 }
 
-$user = $_SESSION['usuario'];
-$perfil = $usuario->getUserProfile($user);
-
-
-// esto hay que dejarlo funcionadno con la funcion que esta arriba 
 if ($perfil != 'Administrador') {
     echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
 }
 
 ?>
-
-<?php require_once 'layout/head.php'; ?>
-
-
-<script>
-    $(document).ready(function(){
-        $('#tablaUsuarios').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-            }
-        }),
-        $(".modificar").click(handlerClickEditButton);   
-
-            
-        function handlerClickEditButton(e) {
-            e.preventDefault();
-            window.scroll(0, window.outerHeight);
-            $.ajax({
-                type: "GET",
-                url: "../controllers/ajax/datosUsuario.php?idUsuario=" + this.id,
-                success: function (data) {
-                //alert(data);
-                var result = $.parseJSON(data);
-                $("#idUsuario").val(result.idUsuario);
-                $("#nombre").val(result.nombre);
-                $("#perfil").val(result.perfil);
-                $("#accion").val("modificar");
-                },
-            });
-        }       
-    });
-</script>
-  
 
 <section id="container">
     <?php require_once 'layout/header.php'; ?>
@@ -87,32 +33,8 @@ if ($perfil != 'Administrador') {
             <div class="row" style="height: 0px;width: 200px;">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <table id="tablaUsuarios" class="display" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th style="padding-left: 5px;">Id</th>
-                                <th style="padding-left: 5px;">Nombre</th>
-                                <th style="padding-left: 5px;">Contraseña</th>
-                                <th style="padding-left: 5px;">Perfil</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                foreach ($data as $value) {
-                                    echo "<tr>";
-                                    echo "<td style='padding-left: 5px;'>" . $value['idUsuario'] . "</td>";
-                                    echo "<td style='padding-left: 5px;'>" . $value['nombre'] . "</td>";
-                                    echo "<td style='padding-left: 5px;'>" . $value['pwd'] . "</td>";
-                                    echo "<td style='padding-left: 5px;'>" . $value['perfil'] . "</td>";
-                                    echo "<td style='padding-left: 5px;'><a href='#' class='modificar' id='" . $value['idUsuario'] . "'><img src='assets/img/edit.ico' width='40'></a></td>";
-                                    echo "<td style='padding-left: 5px;'><a href='../controllers/usuario.php?accion=eliminar&idUsuario=" . $value['idUsuario'] . "'><img src='assets/img/delete.png' width='40'></a></td>";
-                                    echo "</tr>";
-                                }
-                                ?>
-                        </tbody>
-                    </table>
+                    <!-- Users Table -->
+                    <?php require_once 'includes/usersTable.php'; ?>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -155,6 +77,35 @@ if ($perfil != 'Administrador') {
 
 <!-- javascripts -->
 
+<script>
+    $(document).ready(function(){
+        $('#tablaUsuarios').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        }),
+        $(".modificar").click(handlerClickEditButton);   
+
+            
+        function handlerClickEditButton(e) {
+            e.preventDefault();
+            window.scroll(0, window.outerHeight);
+            $.ajax({
+                type: "GET",
+                url: "../controllers/ajax/datosUsuario.php?idUsuario=" + this.id,
+                success: function (data) {
+                //alert(data);
+                var result = $.parseJSON(data);
+                $("#idUsuario").val(result.idUsuario);
+                $("#nombre").val(result.nombre);
+                $("#perfil").val(result.perfil);
+                $("#accion").val("modificar");
+                },
+            });
+        }       
+    });
+</script>
+  
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="assets/js/endpoints.js"></script>
 <script src="assets/js/usersCrud.js"></script>

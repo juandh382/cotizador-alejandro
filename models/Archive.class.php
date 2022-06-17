@@ -48,12 +48,4 @@ class Archive
         }
     }
 
-    public function saveArchive($user_name, $date, $description, $finalName, $type, $size)
-    {
-        global $gbd;
-
-        $sql = "INSERT INTO archivos (name,fecha,description,ruta,tipo,size) VALUES ('$user_name','$date','$description','" . $finalName . "','" . $type . "','" . $size . "')";
-
-        
-    }
 }
