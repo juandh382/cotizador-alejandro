@@ -32,7 +32,23 @@ $perfil = $usuario->getUserProfile($user);
 
 ?>
 
-<?php require_once 'layout/head.php'; ?> 
+<?php require_once 'layout/head.php'; ?>
+
+
+<script>
+    $(document).ready(function(){
+        $('#tablaAbogados').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        })
+             
+    });
+</script>
+  
+
+
+
     <!-- container section start -->
     <section id="container" class="">
 

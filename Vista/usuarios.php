@@ -45,6 +45,37 @@ if ($perfil != 'Administrador') {
 
 <?php require_once 'layout/head.php'; ?>
 
+
+<script>
+    $(document).ready(function(){
+        $('#tablaUsuarios').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        }),
+        $(".modificar").click(handlerClickEditButton);   
+
+            
+        function handlerClickEditButton(e) {
+            e.preventDefault();
+            window.scroll(0, window.outerHeight);
+            $.ajax({
+                type: "GET",
+                url: "../Controlador/ajax/datosUsuario.php?idUsuario=" + this.id,
+                success: function (data) {
+                //alert(data);
+                var result = $.parseJSON(data);
+                $("#idUsuario").val(result.idUsuario);
+                $("#nombre").val(result.nombre);
+                $("#perfil").val(result.perfil);
+                $("#accion").val("modificar");
+                },
+            });
+        }       
+    });
+</script>
+  
+
 <section id="container">
     <?php require_once 'layout/header.php'; ?>
     <?php require_once 'layout/sidebar.php'; ?>
