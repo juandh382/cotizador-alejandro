@@ -1,0 +1,4 @@
+.dataTables_wrapper .dataTables_paginate {
+  float: none !important;
+  width: auto !important;
+}

@@ -34,7 +34,6 @@ $perfil = $usuario->getUserProfile($user);
 
 <?php require_once 'layout/head.php'; ?>
 
-
 <script>
     $(document).ready(function(){
         $('#tablaAbogados').DataTable({
