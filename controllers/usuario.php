@@ -1,10 +1,10 @@
 <?php
 
 require('../config/constants.php');
-require('../Modelo/Conexion.php');
+require('../models/Conexion.php');
 $db = new Conexion();
 $db->conn();
-require('../Modelo/usuario.class.php');
+require('../models/usuario.class.php');
 $usuario = new usuario();
 
 
@@ -36,11 +36,11 @@ if (isset($_POST['get_all_by_id'])) {
 if (isset($_GET['accion']) && $_GET['accion'] == 'eliminar') {
 
   if ($usuario->eliminar($_GET['idUsuario'])) {
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/usuarios.php?eliminar=true" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/usuarios.php?eliminar=true" </script>';
     exit;
   }
   else {
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/usuarios.php?eliminar=false" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/usuarios.php?eliminar=false" </script>';
     exit;
   }
 

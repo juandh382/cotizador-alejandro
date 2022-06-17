@@ -2,21 +2,21 @@
 session_start();
 
 require('../config/constants.php');
-require('../Modelo/sesion.class.php');
+require('../models/sesion.class.php');
 
 $sesion = new sesion();
 
 if (!$sesion->validar()) {
-    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/Vista/login.php?error=2');
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/login.php?error=2" </script>';
+    // header('Location: https://www.stbmsgingenieria.cl/cotizaciones/views/login.php?error=2');
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/login.php?error=2" </script>';
     exit;
 }
 
 
-require('../Modelo/Conexion.php');
+require('../models/Conexion.php');
 $db = new Conexion();
 $db->conn();
-require('../Modelo/usuario.class.php');
+require('../models/usuario.class.php');
 $usuario = new usuario();
 $data = $usuario->obtenerUsuarios();
 $flagAlerta = false;
@@ -38,7 +38,7 @@ $perfil = $usuario->getUserProfile($user);
 
 // esto hay que dejarlo funcionadno con la funcion que esta arriba 
 if ($perfil != 'Administrador') {
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
 }
 
 ?>
@@ -61,7 +61,7 @@ if ($perfil != 'Administrador') {
             window.scroll(0, window.outerHeight);
             $.ajax({
                 type: "GET",
-                url: "../Controlador/ajax/datosUsuario.php?idUsuario=" + this.id,
+                url: "../controllers/ajax/datosUsuario.php?idUsuario=" + this.id,
                 success: function (data) {
                 //alert(data);
                 var result = $.parseJSON(data);
@@ -107,7 +107,7 @@ if ($perfil != 'Administrador') {
         echo "<td style='padding-left: 5px;'>" . $value['pwd'] . "</td>";
         echo "<td style='padding-left: 5px;'>" . $value['perfil'] . "</td>";
         echo "<td style='padding-left: 5px;'><a href='#' class='modificar' id='" . $value['idUsuario'] . "'><img src='assets/img/edit.ico' width='40'></a></td>";
-        echo "<td style='padding-left: 5px;'><a href='../Controlador/usuario.php?accion=eliminar&idUsuario=" . $value['idUsuario'] . "'><img src='assets/img/delete.png' width='40'></a></td>";
+        echo "<td style='padding-left: 5px;'><a href='../controllers/usuario.php?accion=eliminar&idUsuario=" . $value['idUsuario'] . "'><img src='assets/img/delete.png' width='40'></a></td>";
         echo "</tr>";
     }
     ?>
@@ -119,7 +119,7 @@ if ($perfil != 'Administrador') {
             <div class="row" style="height: 0px;width: 800px;">
                 <div class="col-md-1"></div>
                 <div class="col-md-10" style="margin-left: 34px;margin-top: 10px;width: 930px;">
-                    <form class="form-inline" action="../Controlador/usuario.php" method="POST" id="user-form">
+                    <form class="form-inline" action="../controllers/usuario.php" method="POST" id="user-form">
                         <input type="hidden" name="accion" id="accion" value="agregar">
                         <input type="hidden" name="idUsuario" id="idUsuario" value="">
                         <div class="form-group">

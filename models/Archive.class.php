@@ -32,7 +32,8 @@ class Archive
         return $result;
     }
 
-    public function getLastArchiveSaved() {
+    public function getLastArchiveSaved()
+    {
         global $gbd;
         $sql = 'SELECT id, name, fecha, description, ruta, tipo from archivos ORDER BY id DESC LIMIT 1';
 
@@ -45,5 +46,14 @@ class Archive
         else {
             return false;
         }
+    }
+
+    public function saveArchive($user_name, $date, $description, $finalName, $type, $size)
+    {
+        global $gbd;
+
+        $sql = "INSERT INTO archivos (name,fecha,description,ruta,tipo,size) VALUES ('$user_name','$date','$description','" . $finalName . "','" . $type . "','" . $size . "')";
+
+        
     }
 }

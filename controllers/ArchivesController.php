@@ -1,6 +1,6 @@
 <?php
 
-require('../Modelo/Conexion.php');
+require('../models/Conexion.php');
 $db = new Conexion();
 $db->conn();
 
@@ -9,7 +9,7 @@ class ArchivesController
 {
     public function getAllById($id)
     {
-        require_once '../Modelo/Archive.class.php';
+        require_once '../models/Archive.class.php';
 
         $archive = new Archive();
 
@@ -18,7 +18,7 @@ class ArchivesController
 
     public function getAllByName($name)
     {
-        require_once '../Modelo/Archive.class.php';
+        require_once '../models/Archive.class.php';
 
         $archive = new Archive();
 
@@ -26,11 +26,15 @@ class ArchivesController
     }
     public function getLastArchiveSaved()
     {
-        require_once '../Modelo/Archive.class.php';
+        require_once '../models/Archive.class.php';
 
         $archive = new Archive();
 
         return $archive->getLastArchiveSaved();
+    }
+
+    public function saveArchive() {
+        
     }
 
 }

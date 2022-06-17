@@ -4,20 +4,20 @@ session_start();
 
 
 require('../config/constants.php');
-require('../Modelo/sesion.class.php');
+require('../models/sesion.class.php');
 
 $sesion = new sesion();
 
 if (!$sesion->validar()) {
 
-  echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/login.php?error=2" </script>';
+  echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/login.php?error=2" </script>';
   exit;
 }
 
-require('../Modelo/Conexion.php');
+require('../models/Conexion.php');
 $db = new Conexion();
 $db->conn();
-require('../Modelo/usuario.class.php');
+require('../models/usuario.class.php');
 $usuario = new usuario();
 $data = $usuario->obtenerUsuarios();
 $flagAlerta = false;

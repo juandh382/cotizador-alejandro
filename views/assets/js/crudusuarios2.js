@@ -55,7 +55,7 @@ function submitForm(e) {
 
     resetForm();
   });
-  xml.open("POST", "https://www.stbmsgingenieria.cl/cotizaciones/Controlador/usuario.php");
+  xml.open("POST", "https://www.stbmsgingenieria.cl/cotizaciones/controllers/usuario.php");
   xml.send(formData);
 }
 
@@ -73,7 +73,7 @@ async function addRow() {
       "<td style='padding-left: 5px;'><a href='#' class='modificar' id='" +
         idUsuario +
         "'><img src='assets/img/edit.ico' width='40'></a></td>",
-      "<td style='padding-left: 5px;'><a href='../Controlador/usuario.php?accion=eliminar&idUsuario=" +
+      "<td style='padding-left: 5px;'><a href='../controllers/usuario.php?accion=eliminar&idUsuario=" +
         idUsuario +
         "'><img src='assets/img/delete.png' width='40'></a></td>",
       "</tr>",
@@ -89,7 +89,7 @@ async function getLastUserSaved() {
 
   try {
     const res = await fetch(
-      "https://www.stbmsgingenieria.cl/cotizaciones/Controlador/usuario.php",
+      "https://www.stbmsgingenieria.cl/cotizaciones/controllers/usuario.php",
       { method: "POST", body: formData }
     );
 
@@ -113,7 +113,7 @@ async function updateRow() {
       <td style="padding-left: 5px;">${pwd}</td>
       <td style="padding-left: 5px;">${perfil}</td>
       <td style="padding-left: 5px;"><a href="#" class="modificar" id="${id}"><img src="assets/img/edit.ico" width="40"></a></td>
-      <td style="padding-left: 5px;"><a href="../Controlador/usuario.php?accion=eliminar&amp;idUsuario=${id}"><img src="assets/img/delete.png" width="40"></a></td>
+      <td style="padding-left: 5px;"><a href="../controllers/usuario.php?accion=eliminar&amp;idUsuario=${id}"><img src="assets/img/delete.png" width="40"></a></td>
       `;
 
       $(".modificar").click(handlerClickEditButton);
@@ -127,7 +127,7 @@ function handlerClickEditButton(e) {
   if (!document.querySelector("#btn-cancel")) showCancelButton();
   $.ajax({
     type: "GET",
-    url: "../Controlador/ajax/datosUsuario.php?idUsuario=" + this.id,
+    url: "../controllers/ajax/datosUsuario.php?idUsuario=" + this.id,
     success: function (data) {
       //alert(data);
       var result = $.parseJSON(data);
@@ -145,7 +145,7 @@ async function getUserDataById(id) {
   data.append("id", id);
   try {
     const res = await fetch(
-      "https://www.stbmsgingenieria.cl/cotizaciones/Controlador/usuario.php",
+      "https://www.stbmsgingenieria.cl/cotizaciones/controllers/usuario.php",
       {
         method: "post",
         body: data,

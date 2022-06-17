@@ -4,7 +4,7 @@ require_once '../config/constants.php';
 
 if (isset($_GET['id']) && $_GET['id'] !== '') {
 
-    require_once '../Controlador/ArchivesController.php';
+    require_once '../controllers/ArchivesController.php';
 
     $archivesController = new ArchivesController();
 
@@ -16,10 +16,10 @@ if (isset($_GET['id']) && $_GET['id'] !== '') {
     }
     else {
 
-        echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php" </script>';
+        echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
     }
 
 }
 else {
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php" </script>';
+    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
 }

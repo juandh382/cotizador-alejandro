@@ -48,7 +48,7 @@ if(isset($_GET['error']) && ($_GET['error'] == 2)){
 
   <body class="login-img3-body">
     <div class="container">         
-        <form class="login-form" action="../Controlador/validar.php" method="POST">             
+        <form class="login-form" action="../controllers/validar.php" method="POST">             
         <div class="login-wrap">
 <?php 
         if ($flagError){ ?>
