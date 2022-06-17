@@ -12,33 +12,32 @@ $db->conn();
 /* Crear objeto de tipo usuario */
 require('../Modelo/usuario.class.php');
 $usuario = new usuario();
-   
- /*   if($usuario ->validar("admin", "123")){
-     echo "bienvenido";   
-    }else{
-        echo "no puede entrar";
-    };
-  */
-$objUsuario = $usuario->validar( $_POST['nombre'], $_POST['pwd']);
 
-if ($objUsuario){
- 
-   /* echo "Login OK";  */    
-   require('../Modelo/sesion.class.php');
+
+
+$objUsuario = $usuario->validar($_POST['nombre'], $_POST['pwd']);
+
+if ($objUsuario) {
+
+    /* echo "Login OK";  */
+    require('../Modelo/sesion.class.php');
     $sesion = new sesion();
-    $sesion->iniciar(); 
-  
+    $sesion->iniciar();
+
     echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/index.php" </script>';
 
-    
-    exit;  
-     
-       
-}else{
-   /* echo "Login fail!!";  */
+
+    exit;
+
+
+
+}
+else {
+    /* echo "Login fail!!";  */
 
     echo '<script>window.location = "' . DOMAIN . '/cotizaciones/Vista/login.php?error=1" </script>';
     exit;
-};
+}
+;
 
 ?>

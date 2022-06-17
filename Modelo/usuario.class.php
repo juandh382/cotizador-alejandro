@@ -34,10 +34,7 @@ class usuario
         if ($res) {
             $row = $res->fetch(PDO::FETCH_ASSOC);
             if (password_verify($pwd, $row['pwd'])) {
-              //  echo '¡La contraseña es válida! ';
-                //  print_r($row);
-                // $perfil = $row['perfil'];
-                // $_SESSION['perfil'] = $perfil; 
+              
                 return true;
             }
             else {
@@ -48,12 +45,7 @@ class usuario
         else {
             return false;
         }
-    /* $res = $gbd -> query($sql) -> fetch();  */
-    /* if($res){
-     return true;
-     }else{
-     return false;
-     }  */
+   
     }
 
     function obtenerUsuarios()

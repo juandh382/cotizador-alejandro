@@ -13,27 +13,32 @@
  */
 
 
-class sesion {
+class sesion
+{
     //put your code here
-    
-   function iniciar(){
-       
-       $_SESSION['valida'] = true;   
-       $_SESSION['usuario'] = $_POST['nombre'];  
+
+    function iniciar()
+    {
+
+        $_SESSION['valida'] = true;
+        $_SESSION['usuario'] = $_POST['nombre'];
     }
-    
-   function validar(){
-       
-       if(isset($_SESSION['valida']) && $_SESSION['valida']){
-           return true;
-       }else{
-           return false;
-       }         
-   }
-   
-   function cerrar(){
-        
+
+    function validar()
+    {
+
+        if (isset($_SESSION['valida']) && $_SESSION['valida']) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function cerrar()
+    {
+
         $_SESSION[] = array();
         session_destroy();
-   }
+    }
 }

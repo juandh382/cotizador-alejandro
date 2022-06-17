@@ -1,10 +1,8 @@
 <?php
 
 /**
- * DOMAIN
-*/
+ * DOMAIN */
 
 
-define("DOMAIN", "https://www.stbmsgingenieria.cl");
-// define("DOMAIN", "http://localhost/Cotizaciones");
-
+// define("DOMAIN", "https://www.stbmsgingenieria.cl");
+define("DOMAIN", "http://localhost/produccion");

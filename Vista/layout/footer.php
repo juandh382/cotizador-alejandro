@@ -9,7 +9,6 @@
     <!-- charts scripts -->
     <script src="assets/js/scripts.js"></script>
     <!-- custom script for this page-->
-    <script src="assets/js/jquery.slimscroll.min.js"></script>
     
 </body>
 

@@ -15,19 +15,19 @@ if (!$sesion->validar()) {
 
 
 
-    require('../Modelo/Conexion.php');
-    $db = new Conexion();
-    $db->conn();
+require('../Modelo/Conexion.php');
+$db = new Conexion();
+$db->conn();
 
-    require('../Modelo/usuario.class.php');
-    $usuario = new usuario();
-    $data = $usuario->obtenerArchivos();
+require('../Modelo/usuario.class.php');
+$usuario = new usuario();
+$data = $usuario->obtenerArchivos();
 
-    $users = $usuario->obtenerUsuarios();
+$users = $usuario->obtenerUsuarios();
 
-    $user = $_SESSION['usuario'];
+$user = $_SESSION['usuario'];
 
-    $perfil = $usuario->getUserProfile($user);
+$perfil = $usuario->getUserProfile($user);
 
 
 ?>
@@ -59,45 +59,45 @@ if (!$sesion->validar()) {
                 <?php
 
 
-include '../Vista/config.php';
+                include '../Vista/config.php';
 
-if (isset($_POST['submit'])) {
+                if (isset($_POST['submit'])) {
 
-    if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
+                    if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
 
-        // creamos las variables para subir a la db
-        $ruta = "upload/";
-        $nombrefinal = trim($_FILES['fichero']['name']); //Eliminamos los espacios en blanco
-        // $nombrefinal= preg_replace (" ", "", $nombrefinal);//Sustituye una expresión regular
-        $upload = $ruta . $nombrefinal;
+                        // creamos las variables para subir a la db
+                        $ruta = "upload/";
+                        $nombrefinal = trim($_FILES['fichero']['name']); //Eliminamos los espacios en blanco
+                        // $nombrefinal= preg_replace (" ", "", $nombrefinal);//Sustituye una expresión regular
+                        $upload = $ruta . $nombrefinal;
 
-        if (move_uploaded_file($_FILES['fichero']['tmp_name'], $upload)) { //movemos el archivo a su ubicacion 
+                        if (move_uploaded_file($_FILES['fichero']['tmp_name'], $upload)) { //movemos el archivo a su ubicacion 
 
-            echo "<b>Upload exitoso!. Datos:</b><br>";
-            echo "Nombre: <i><a href=\"" . $ruta . $nombrefinal . "\">" . $_FILES['fichero']['name'] . "</a></i><br>";
-            echo "Tipo MIME: <i>" . $_FILES['fichero']['type'] . "</i><br>";
-            echo "Peso: <i>" . $_FILES['fichero']['size'] . " bytes</i><br>";
-            echo "<br><hr><br>";
+                            echo "<b>Upload exitoso!. Datos:</b><br>";
+                            echo "Nombre: <i><a href=\"" . $ruta . $nombrefinal . "\">" . $_FILES['fichero']['name'] . "</a></i><br>";
+                            echo "Tipo MIME: <i>" . $_FILES['fichero']['type'] . "</i><br>";
+                            echo "Peso: <i>" . $_FILES['fichero']['size'] . " bytes</i><br>";
+                            echo "<br><hr><br>";
 
-            $nombre = $_POST['nombre'];
-            $fecha = $_POST['fecha'];
-            $description = $_POST['descripcion'];
+                            $nombre = $_POST['nombre'];
+                            $fecha = $_POST['fecha'];
+                            $description = $_POST['descripcion'];
 
-            $var_consulta = "select * from archivos";
-            $var_resultado = $obj_conexion->query($var_consulta);
+                            $var_consulta = "select * from archivos";
+                            $var_resultado = $obj_conexion->query($var_consulta);
 
-            $query = "INSERT INTO archivos (name,fecha,description,ruta,tipo,size) VALUES ('$nombre','$fecha','$description','" . $nombrefinal . "','" . $_FILES['fichero']['type'] . "','" . $_FILES['fichero']['size'] . "')";
+                            $query = "INSERT INTO archivos (name,fecha,description,ruta,tipo,size) VALUES ('$nombre','$fecha','$description','" . $nombrefinal . "','" . $_FILES['fichero']['type'] . "','" . $_FILES['fichero']['size'] . "')";
 
-            mysqli_query($obj_conexion, $query) or die(mysqli_error());
-            echo "El archivo '" . $nombrefinal . "' se ha subido con éxito <br>";
-        }
-
-
-    }
-}
+                            mysqli_query($obj_conexion, $query) or die(mysqli_error());
+                            echo "El archivo '" . $nombrefinal . "' se ha subido con éxito <br>";
+                        }
 
 
-?>
+                    }
+                }
+
+
+                ?>
 
                 <table id="tablaAbogados" class="display" style="width:100%">
                     <thead>
@@ -113,18 +113,18 @@ if (isset($_POST['submit'])) {
                     </thead>
                     <tbody>
                         <?php
-foreach ($data as $value) {
-    echo "<tr>";
-    echo "<td style='padding-left: 5px;'>" . $value['id'] . "</td>";
-    echo "<td style='padding-left: 5px;'>" . $value['name'] . "</td>";
-    echo "<td style='padding-left: 5px;'>" . $value['fecha'] . "</td>";
-    echo "<td style='padding-left: 5px;'>" . $value['description'] . "</td>";
-    echo "<td style='padding-left: 5px;'><a href='archive.php?id=" . $value['id'] . "' target='_blank'>" . $value['ruta'] . "</a></td>";
-    echo "<td style='padding-left: 5px;'>" . $value['tipo'] . "</td>";
-    echo "</tr>";
-   // echo "";
-}
-?>
+                            foreach ($data as $value) {
+                                echo "<tr>";
+                                echo "<td style='padding-left: 5px;'>" . $value['id'] . "</td>";
+                                echo "<td style='padding-left: 5px;'>" . $value['name'] . "</td>";
+                                echo "<td style='padding-left: 5px;'>" . $value['fecha'] . "</td>";
+                                echo "<td style='padding-left: 5px;'>" . $value['description'] . "</td>";
+                                echo "<td style='padding-left: 5px;'><a href='archive.php?id=" . $value['id'] . "' target='_blank'>" . $value['ruta'] . "</a></td>";
+                                echo "<td style='padding-left: 5px;'>" . $value['tipo'] . "</td>";
+                                echo "</tr>";
+                            // echo "";
+                            }
+                        ?>
                     </tbody>
                 </table>
 
