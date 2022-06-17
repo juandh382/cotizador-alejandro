@@ -14,6 +14,10 @@ class Utils
         $nombrefinal = trim($files['fichero']['name']);
         $upload = $ruta . $nombrefinal;
 
+        if (!is_dir('upload')) {
+            mkdir('upload', 0777);
+        }
+
         if (move_uploaded_file($files['fichero']['tmp_name'], $upload)) {
 
             $nombre = $_POST['nombre'];

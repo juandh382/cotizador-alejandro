@@ -28,7 +28,7 @@ if ($perfil != 'Administrador') {
     <section id="main-content">
 
         <section class="wrapper">
-    
+
             <!--overview start-->
             <div class="row" style="height: 0px;width: 200px;">
                 <div class="col-md-2"></div>
@@ -55,15 +55,15 @@ if ($perfil != 'Administrador') {
                         <div class="form-group">
                             <label for="perfil">Perfil:</label>
                             <select class="form-control" id="perfil" name="perfil" required="">
-    
+
                                 <option>Administrador</option>
                                 <option>Usuario</option>
-    
+
                             </select>
                         </div><br><br>
                         <button type="submit" id="btn-submit" class="btn btn-success"
                             style="margin-top: 0px;">Agregar</button>
-    
+
                     </form>
                 </div>
                 <div class="col-md-1"></div>
@@ -78,34 +78,34 @@ if ($perfil != 'Administrador') {
 <!-- javascripts -->
 
 <script>
-    $(document).ready(function(){
-        $('#tablaUsuarios').DataTable({
+$(document).ready(function() {
+    $('#tablaUsuarios').DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             }
         }),
-        $(".modificar").click(handlerClickEditButton);   
+        $(".modificar").click(handlerClickEditButton);
 
-            
-        function handlerClickEditButton(e) {
-            e.preventDefault();
-            window.scroll(0, window.outerHeight);
-            $.ajax({
-                type: "GET",
-                url: "../controllers/ajax/datosUsuario.php?idUsuario=" + this.id,
-                success: function (data) {
+
+    function handlerClickEditButton(e) {
+        e.preventDefault();
+        window.scroll(0, window.outerHeight);
+        $.ajax({
+            type: "GET",
+            url: "../controllers/ajax/datosUsuario.php?idUsuario=" + this.id,
+            success: function(data) {
                 //alert(data);
                 var result = $.parseJSON(data);
                 $("#idUsuario").val(result.idUsuario);
                 $("#nombre").val(result.nombre);
                 $("#perfil").val(result.perfil);
                 $("#accion").val("modificar");
-                },
-            });
-        }       
-    });
+            },
+        });
+    }
+});
 </script>
-  
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="assets/js/endpoints.js"></script>
 <script src="assets/js/usersCrud.js"></script>
