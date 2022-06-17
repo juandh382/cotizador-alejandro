@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Modelo/usuario.class.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Controlador/usuario.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Modelo/cliente.class.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Vista/crudusuarios.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Vista/crudclientes.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Modelo/abogado.class.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Vista/index.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Controlador/validar.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Controlador/cerrarSesion.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Vista/usuarios.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Vista/cotizaciones.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/Modelo/Conexion.php</file>
+        </group>
+    </open-files>
+</project-private>
