@@ -21,12 +21,14 @@ $users = $usuario->obtenerUsuarios();
         <section id="main-content">
             <section class="wrapper">
                 <!--overview start-->
+
                 <div class="row" id="breadcrumb-container">
                     <div class="col-lg-12">
-                        <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
+                        <h3 class="page-header"><i class="fa fa-laptop"></i> Cotizaciones</h3>
                         <ol class="breadcrumb">
                             <li><i class="fa fa-home"></i><a href="index.php">Home</a></li>
-                            <li><i class="fa fa-laptop"></i>Dashboard</li>
+                            <li>Cotizaciones</li>
+                            <li><a href="cotizaciones.php">Consultar cotizaciones</a></li>
                         </ol>
                     </div>
                 </div>
