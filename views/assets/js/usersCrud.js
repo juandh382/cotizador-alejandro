@@ -13,6 +13,15 @@ editButtons.forEach((btn) => {
   });
 });
 
+$(document).ready(function () {
+  $("#tablaUsuarios").DataTable({
+    language: {
+      url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+    },
+  }),
+    $(".modificar").click(handlerClickEditButton);
+});
+
 // functions
 
 function showCancelButton() {
@@ -127,13 +136,13 @@ function handlerClickEditButton(e) {
   if (!document.querySelector("#btn-cancel")) showCancelButton();
   $.ajax({
     type: "GET",
-    url: "../controllers/ajax/datosUsuario.php?idUsuario=" + this.id,
+    url: `${USER_CONTROLLER}?idUsuario=${this.id}&get_all_by_id=true`,
     success: function (data) {
-      //alert(data);
-      var result = $.parseJSON(data);
-      $("#idUsuario").val(result.idUsuario);
-      $("#nombre").val(result.nombre);
-      $("#perfil").val(result.perfil);
+      const { response } = JSON.parse(data);
+
+      $("#idUsuario").val(response.idUsuario);
+      $("#nombre").val(response.nombre);
+      $("#perfil").val(response.perfil);
       $("#accion").val("modificar");
     },
   });

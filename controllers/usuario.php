@@ -20,10 +20,12 @@ if (isset($_POST['get_last_user_saved'])) {
   exit;
 }
 
-if (isset($_POST['get_all_by_id'])) {
+if (isset($_POST['get_all_by_id']) || isset($_GET['get_all_by_id'])) {
+
+  $id = isset($_POST['id']) ? $_POST['id'] : $_GET['idUsuario'];
 
   $result = [
-    'response' => $usuario->obtenerUsuarioPorId($_POST['id'])
+    'response' => $usuario->obtenerUsuarioPorId($id)
   ];
 
   echo json_encode($result);
