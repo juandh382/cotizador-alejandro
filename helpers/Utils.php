@@ -4,7 +4,7 @@
 
 class Utils
 {
-    public static function uploadFile($files)
+    public static function uploadFile(array $files): void
     {
 
         global $gbd;
