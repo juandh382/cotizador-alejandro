@@ -2,12 +2,12 @@
  * Producción
  */
 
-// const base_url = "https://www.stbmsgingenieria.cl/cotizaciones";
+const base_url = "https://www.stbmsgingenieria.cl/cotizaciones";
 
 /**
  * Desarrollo
  */
-const base_url = "http://localhost/cotizaciones";
+// const base_url = "http://localhost/cotizaciones";
 
 /* ================================================================= */
 

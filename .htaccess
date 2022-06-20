@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 
 RewriteEngine on
-ErrorDocument 404 http://localhost/cotizaciones/Error/index
+ErrorDocument 404 https://stbmsgingenieria.cl/cotizaciones/Error/index
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
