@@ -11,22 +11,13 @@
  *
  * @author cetecom
  */
-class usuario
+class User
 {
 
     function validar($nombre, $pwd)
     {
 
         global $gbd;
-        /*$sql = "SELECT idUsuario, nombreDesc "
-         . "FROM usuario "
-         . "WHERE nombre='".$nom."' ";            
-         $pwdEncriptada = password_hash($pwd, PASSWORD_DEFAULT);
-         $sql .= " AND pwd='".$pwdEncriptada."' ";  */
-
-        //echo $sql;
-
-        //Código corregido profe, para encriptar la clave
 
         $sql = "SELECT pwd FROM usuario WHERE nombre='" . $nombre . "' ";
         $res = $gbd->query($sql);
@@ -35,7 +26,7 @@ class usuario
             $row = $res->fetch(PDO::FETCH_ASSOC);
             if (password_verify($pwd, $row['pwd'])) {
               
-                return true;
+                return $row;
             }
             else {
                 echo 'La contraseña es invalida. ';

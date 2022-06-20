@@ -1,6 +1,10 @@
 <?php
 
-require_once '../config/constants.php';
+require_once '../config/parameters.php';
+require_once '../config/Conexion.php';
+
+$connection = new Conexion();
+$connection->conn();
 
 if (isset($_GET['id']) && $_GET['id'] !== '') {
 
@@ -16,10 +20,10 @@ if (isset($_GET['id']) && $_GET['id'] !== '') {
     }
     else {
 
-        echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
+        echo '<script>window.location.href = "' . base_url . '?controller=Error&action=index" </script>';
     }
 
 }
 else {
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
+    echo '<script>window.location.href = "' . base_url . '?controller=Error&action=index" </script>';
 }

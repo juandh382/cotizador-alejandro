@@ -19,7 +19,7 @@
                 echo "<td style='padding-left: 5px;'>" . $value['name'] . "</td>";
                 echo "<td style='padding-left: 5px;'>" . $value['fecha'] . "</td>";
                 echo "<td style='padding-left: 5px;'>" . $value['description'] . "</td>";
-                echo "<td style='padding-left: 5px;'><a href='archive.php?id=" . $value['id'] . "' target='_blank'>" . $value['ruta'] . "</a></td>";
+                echo "<td style='padding-left: 5px;'><a href='".base_url."/views/archive.php?id=" . $value['id'] . "' target='_blank'>" . $value['ruta'] . "</a></td>";
                 echo "<td style='padding-left: 5px;'>" . $value['tipo'] . "</td>";
                 echo "</tr>";
             }

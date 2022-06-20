@@ -7,8 +7,6 @@
             <th style="padding-left: 5px;">Fecha inicio</th>
             <th style="padding-left: 5px;">Fecha termino</th>
             <th style="padding-left: 5px;">Insumos</th>
-            <!--   <th style="padding-left: 5px;">Comentarios</th>       -->
-            <!--   <th style="padding-left: 5px;">Fecha en que se oferto</th>    -->
             <th style="padding-left: 5px;">Cantidad</th>
             <th style="padding-left: 5px;">Valor unitario</th>
             <th style="padding-left: 5px;">Valor venta</th>
@@ -38,12 +36,12 @@
             <td style='padding-left: 5px;'><?=$value['valorGanancia']?></td>
             <td style='padding-left: 5px;'>
                 <a href='#' class='modificar' id='<?=$value['idCotizacion']?>'>
-                    <img src='assets/img/edit.ico' width='40'>
+                    <img src='<?=base_url?>/views/assets/img/edit.ico' width='40'>
                 </a>
             </td>
             <td style='padding-left: 5px;'>
-                <a href='../controller/cotizacion.php?accion=eliminar&idCotizacion=<?=$value['idCotizacion']?>'>
-                    <img src='assets/img/delete.png' width='40'>
+                <a href='../controller/QuoteController.php?accion=eliminar&idCotizacion=<?=$value['idCotizacion']?>'>
+                    <img src='<?=base_url?>/views/assets/img/delete.png' width='40'>
                 </a>
             </td>
         </tr>

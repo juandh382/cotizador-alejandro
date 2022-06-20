@@ -2054,7 +2054,7 @@
           var doc;
           try {
             doc = 'contentDocument' in this ? this.contentDocument : this.contentWindow._doc;
-            var a = doc.domain;
+            var a = doc.base_url;
           } catch (e) {
             self.iframexd = true;
             doc = false;
@@ -2062,7 +2062,7 @@
 
           if (self.iframexd) {
             if ("console" in _win) console.log('NiceScroll error: policy restriced iframe');
-            return true; //cross-domain - I can't manage this
+            return true; //cross-base_url - I can't manage this
           }
 
           self.forcescreen = true;

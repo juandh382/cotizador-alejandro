@@ -3,16 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Cotizaciones/models/usuario.class.php</file>
-            <file>file:/C:/xampp/htdocs/Cotizaciones/controllers/usuario.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/models/Usuario.class.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/controllers/UserController.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/models/cliente.class.php</file>
-            <file>file:/C:/xampp/htdocs/Cotizaciones/views/crudusuarios.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/views/crudUserController.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/views/crudclientes.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/models/abogado.class.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/views/index.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/controllers/validar.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/controllers/cerrarSesion.php</file>
-            <file>file:/C:/xampp/htdocs/Cotizaciones/views/usuarios.php</file>
+            <file>file:/C:/xampp/htdocs/Cotizaciones/views/UserController.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/views/cotizaciones.php</file>
             <file>file:/C:/xampp/htdocs/Cotizaciones/config/Conexion.php</file>
         </group>

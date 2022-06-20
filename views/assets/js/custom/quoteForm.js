@@ -3,7 +3,7 @@ quoteForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(quoteForm);
   data.append("submit", true);
-  fetch(CONSULT_QUOTES_VIEW, {
+  fetch(UTILS, {
     method: "POST",
     body: data,
   })
@@ -31,7 +31,7 @@ async function addRow() {
       name,
       fecha,
       description,
-      `<td style="padding-left: 5px;"><a href="archive.php?id=${id}" target="_blank">${ruta}</a></td>`,
+      `<td style="padding-left: 5px;"><a href="${base_url}/views/archive.php?id=${id}" target="_blank">${ruta}</a></td>`,
       tipo,
     ])
     .draw(false);
@@ -46,6 +46,8 @@ async function getLastArchiveSaved() {
       method: "POST",
       body: formData,
     });
+
+    // return res;
 
     const { response } = await res.json();
 

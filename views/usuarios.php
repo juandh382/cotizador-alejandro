@@ -1,6 +1,6 @@
-<?php require_once 'layout/head.php'; ?>
-
 <?php
+
+$usuario = new User();
 
 $data = $usuario->obtenerUsuarios();
 $flagAlerta = false;
@@ -16,15 +16,14 @@ elseif (isset($_GET['eliminar']) && $_GET['eliminar'] == 'false') {
     $tipoAlerta = "danger";
 }
 
-if ($perfil != 'Administrador') {
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
-}
+
+!Utils::isAdmin($usuario->getUserProfile($_SESSION['usuario'])) ?Utils::goDashBoard() : false;
 
 ?>
 
 <section id="container">
-    <?php require_once 'layout/header.php'; ?>
-    <?php require_once 'layout/sidebar.php'; ?>
+    <?php require_once 'views/layout/header.php'; ?>
+    <?php require_once 'views/layout/sidebar.php'; ?>
     <section id="main-content">
 
         <section class="wrapper">
@@ -41,7 +40,7 @@ if ($perfil != 'Administrador') {
             <div class="row" style="height: 0px;width: 800px;">
                 <div class="col-md-1"></div>
                 <div class="col-md-10" style="margin-left: 34px;margin-top: 10px;width: 930px;">
-                    <form class="form-inline" action="../controllers/usuario.php" method="POST" id="user-form">
+                    <form class="form-inline" action="../controllers/UserController.php" method="POST" id="user-form">
                         <input type="hidden" name="accion" id="accion" value="agregar">
                         <input type="hidden" name="idUsuario" id="idUsuario" value="">
                         <div class="form-group">
@@ -78,8 +77,5 @@ if ($perfil != 'Administrador') {
 <!-- javascripts -->
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="assets/js/endpoints.js"></script>
-<script src="assets/js/usersCrud.js"></script>
-
-
-<?php require_once 'layout/footer.php'; ?>
+<script src="<?=base_url?>/views/assets/js/custom/endpoints.js"></script>
+<script src="<?=base_url?>/views/assets/js/custom/usersCrud.js"></script>

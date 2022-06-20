@@ -1,10 +1,5 @@
 <?php
 
-require('../config/Conexion.php');
-$db = new Conexion();
-$db->conn();
-
-
 class ArchivesController
 {
     public function getAllById($id)
@@ -26,15 +21,14 @@ class ArchivesController
     }
     public function getLastArchiveSaved()
     {
-        require_once '../models/Archive.class.php';
 
+        require_once '../config/Conexion.php';
+        require_once '../models/Archive.class.php';
+        $connection = new Conexion();
+        $connection->conn();
         $archive = new Archive();
 
         return $archive->getLastArchiveSaved();
-    }
-
-    public function saveArchive() {
-        
     }
 
 }
@@ -52,11 +46,10 @@ if (isset($_POST['get_all_by_file_name'])) {
 if (isset($_POST['get_last_archive_saved'])) {
 
     $archivesController = new ArchivesController();
-    $response = [
+
+    echo json_encode([
 
         'response' => $archivesController->getLastArchiveSaved()
-    ];
-
-    echo json_encode($response);
+    ]);
 }
 

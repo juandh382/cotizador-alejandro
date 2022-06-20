@@ -2,7 +2,7 @@
 
 session_start();
 
-require('../config/constants.php');
+require('../config/parameters.php');
 require('../config/Conexion.php');
 
 /* Crear objeto de esta clase */
@@ -10,8 +10,8 @@ $db = new Conexion();
 $db->conn();
 
 /* Crear objeto de tipo usuario */
-require('../models/usuario.class.php');
-$usuario = new usuario();
+require('../models/User.php');
+$usuario = new User();
 
 
 
@@ -24,7 +24,7 @@ if ($objUsuario) {
     $sesion = new sesion();
     $sesion->iniciar();
 
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/index.php" </script>';
+    echo '<script>window.location.href = "' . base_url . '" </script>';
 
 
     exit;
@@ -35,7 +35,7 @@ if ($objUsuario) {
 else {
     /* echo "Login fail!!";  */
 
-    echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/login.php?error=1" </script>';
+    echo '<script>window.location.href = "' . base_url . '?controller=User&action=showLoginForm&error=1" </script>';
     exit;
 }
 ;

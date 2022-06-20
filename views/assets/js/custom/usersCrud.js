@@ -79,13 +79,17 @@ async function addRow() {
       nombre,
       pwd,
       perfil,
-      "<td style='padding-left: 5px;'><a href='#' class='modificar' id='" +
-        idUsuario +
-        "'><img src='assets/img/edit.ico' width='40'></a></td>",
-      "<td style='padding-left: 5px;'><a href='../controllers/usuario.php?accion=eliminar&idUsuario=" +
-        idUsuario +
-        "'><img src='assets/img/delete.png' width='40'></a></td>",
-      "</tr>",
+      `<td style="padding-left: 5px;">
+        <a href="#" class="modificar" id="${idUsuario}">
+          <img src="${base_url}/views/assets/img/edit.ico" width="40">
+        </a>
+      </td>`,
+      `
+      <td style="padding-left: 5px;">
+        <a href="${base_url}/?controller=User&action=index&accion=eliminar&amp;idUsuario=${idUsuario}">
+          <img src="${base_url}/views/assets/img/delete.png" width="40">
+        </a>
+      </td>`
     ])
     .draw(false);
 
@@ -121,8 +125,16 @@ async function updateRow() {
       <td style="padding-left: 5px;" class="sorting_1">${id}</td><td style="padding-left: 5px;">${nombre}</td>
       <td style="padding-left: 5px;">${pwd}</td>
       <td style="padding-left: 5px;">${perfil}</td>
-      <td style="padding-left: 5px;"><a href="#" class="modificar" id="${id}"><img src="assets/img/edit.ico" width="40"></a></td>
-      <td style="padding-left: 5px;"><a href="../controllers/usuario.php?accion=eliminar&amp;idUsuario=${id}"><img src="assets/img/delete.png" width="40"></a></td>
+      <td style="padding-left: 5px;">
+        <a href="#" class="modificar" id="${id}">
+          <img src="${base_url}/views/assets/img/edit.ico" width="40">
+        </a>
+      </td>
+      <td style="padding-left: 5px;">
+        <a href="${base_url}/?controller=User&action=index&accion=eliminar&amp;idUsuario=${id}">
+          <img src="${base_url}/views/assets/img/delete.png" width="40">
+        </a>
+      </td>
       `;
 
       $(".modificar").click(handlerClickEditButton);
@@ -138,6 +150,8 @@ function handlerClickEditButton(e) {
     type: "GET",
     url: `${USER_CONTROLLER}?idUsuario=${this.id}&get_all_by_id=true`,
     success: function (data) {
+      // console.log(data)
+
       const { response } = JSON.parse(data);
 
       $("#idUsuario").val(response.idUsuario);

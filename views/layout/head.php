@@ -1,39 +1,3 @@
-<?php   
-
-
-session_start();
-
-
-/* ========================= */
-/*      DB CONNECTION      */
-/* ========================= */
-require('../config/Conexion.php');
-$db = new Conexion();
-$db->conn();
-
-require('../config/constants.php');
-require_once '../helpers/Utils.php';
-
-require('../models/sesion.class.php');
-
-$sesion = new sesion();
-
-if (!$sesion->validar()) {
-
-  echo '<script>window.location = "' . DOMAIN . '/cotizaciones/views/login.php?error=2" </script>';
-  exit;
-}
-
-
-require('../models/usuario.class.php');
-$usuario = new usuario();
-
-$user = $_SESSION['usuario'];
-$perfil = $usuario->getUserProfile($user);
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,7 +6,7 @@ $perfil = $usuario->getUserProfile($user);
     <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <!--  <link rel="shortcut icon" href="assets/img/Waterfalls-Scenery-Wallpaper-1.jpg">  -->
+
 
     <title>Sistema Cotizaciones</title>
     <!-- Bootstrap W3Schools -->
@@ -51,17 +15,17 @@ $perfil = $usuario->getUserProfile($user);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <!-- DT --> 
-    <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="<?=base_url?>/views/assets/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> 
     
     <!-- font icon -->
-    <link href="assets/css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />    
+    <link href="<?=base_url?>/views/assets/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="<?=base_url?>/views/assets/css/font-awesome.min.css" rel="stylesheet" />    
     <!-- easy pie chart-->
-	<link href="assets/css/widgets.css" rel="stylesheet">
-        <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/style-responsive.css" rel="stylesheet" />
-	<link href="assets/css/xcharts.min.css" rel=" stylesheet">	
+	<link href="<?=base_url?>/views/assets/css/widgets.css" rel="stylesheet">
+        <link href="<?=base_url?>/views/assets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url?>/views/assets/css/style-responsive.css" rel="stylesheet" />
+	<link href="<?=base_url?>/views/assets/css/xcharts.min.css" rel=" stylesheet">	
 
 
 </head>  
