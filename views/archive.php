@@ -20,10 +20,10 @@ if (isset($_GET['id']) && $_GET['id'] !== '') {
     }
     else {
 
-        echo '<script>window.location.href = "' . base_url . '?controller=Error&action=index" </script>';
+        echo '<script>window.location.href = "' . base_url . '/Error/index" </script>';
     }
 
 }
 else {
-    echo '<script>window.location.href = "' . base_url . '?controller=Error&action=index" </script>';
+    echo '<script>window.location.href = "' . base_url . '/Error/index" </script>';
 }

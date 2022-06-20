@@ -20,7 +20,7 @@ class UserController
   {
     $sesion = new sesion();
     $sesion->cerrar();
-    echo '<script>window.location.href = "' . base_url . '?controller=User&action=showLoginForm" </script>';
+    echo '<script>window.location.href = "' . base_url . '/User/showLoginForm" </script>';
   }
 
   public function index(): void
@@ -58,7 +58,7 @@ if (isset($_POST['get_all_by_id']) || isset($_GET['get_all_by_id'])) {
 if (isset($_GET['accion']) && $_GET['accion'] == 'eliminar') {
   $user = new User();
   $user->eliminar($_GET['idUsuario']);
-  echo '<script>window.location.href = "' . base_url . '?controller=User&action=index" </script>';
+  echo '<script>window.location.href = "' . base_url . '/User/index" </script>';
   exit;
 
 }

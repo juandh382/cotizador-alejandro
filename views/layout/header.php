@@ -10,7 +10,7 @@
         <h4>Bienvenido <?=$_SESSION['usuario']?></h4>
     </div>
     <button type="button" class="btn btn-primary" style="margin-left: 980px;margin-top: 12px;"><a
-            href="<?=base_url?>?controller=User&action=logOut<?php echo SID; ?>" style="color: white;">Cerrar
+            href="<?=base_url?>/User/logOut<?php echo SID; ?>" style="color: white;">Cerrar
             Sesión</a></button>
     <!--logo end-->
 </header>

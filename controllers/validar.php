@@ -35,7 +35,7 @@ if ($objUsuario) {
 else {
     /* echo "Login fail!!";  */
 
-    echo '<script>window.location.href = "' . base_url . '?controller=User&action=showLoginForm&error=1" </script>';
+    echo '<script>window.location.href = "' . base_url . '/User/showLoginForm&error=1" </script>';
     exit;
 }
 ;

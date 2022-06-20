@@ -15,8 +15,8 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="<?=base_url?>?controller=Quote&action=showQuotesCRUD">CRUD Cotizaciones</a></li>
-                    <li><a class="" href="<?=base_url?>?controller=Quote&action=showQuotes">Consultar Cotizaciones</a></li>
+                    <li><a class="" href="<?=base_url?>/Quote/showQuotesCRUD">CRUD Cotizaciones</a></li>
+                    <li><a class="" href="<?=base_url?>/Quote/showQuotes">Consultar Cotizaciones</a></li>
                 </ul>
             </li>
             <?php 
@@ -29,7 +29,7 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="<?=base_url?>?controller=User&action=index">CRUD Usuarios</a></li>
+                    <li><a class="" href="<?=base_url?>/User/index">CRUD Usuarios</a></li>
                 </ul>
             </li>
             <?php endif; ?>
