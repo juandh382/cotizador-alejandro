@@ -56,7 +56,7 @@ if (isset($_POST['accion']) && $_POST['accion'] == 'agregar') {
 if (isset($_POST['accion']) && $_POST['accion'] == 'modificar') {
 
   echo json_encode([
-    'response' => $cotizacion->modificar($_POST['idCotizacion'], $_POST['empresa'], $_POST['idCotizacion2'], $_POST['fechaInicio'], $_POST['fechaTermino'], $_POST['insumos'], $_POST['comentarios'], $_POST['cantidad'], $_POST['valorUnitario'], $_POST['porcentaje'], $_POST['despacho'])
+    'result' => QuoteController::createQuoteModel()->modificar($_POST['idCotizacion'], $_POST['empresa'], $_POST['idCotizacion2'], $_POST['fechaInicio'], $_POST['fechaTermino'], $_POST['insumos'], $_POST['comentarios'], $_POST['cantidad'], $_POST['valorUnitario'], $_POST['porcentaje'], $_POST['despacho'], $_POST['valorVenta'], $_POST['total'], $_POST['valorGanancia'])
   ]);
 
   exit;

@@ -1,4 +1,4 @@
-<form action="../controller/QuoteController.php" method="POST" id="user-form">
+<form action="../controller/QuoteController.php" method="POST" id="quote-form">
     <input type="hidden" name="accion" id="accion" value="agregar">
     <input type="hidden" name="idCotizacion" id="idCotizacion" value="">
     <div class="form-row">
@@ -8,7 +8,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="idCotizacion2">ID Cotizacion:</label>
-            <input type="text" class="form-control" id="idCotizacion2" name="idCotizacion2">
+            <input type="number" class="form-control" id="idCotizacion2" name="idCotizacion2">
         </div>
     </div>
     <div class="form-group col-md-6">
@@ -24,34 +24,34 @@
             <label for="insumos">Insumos:</label>
             <input type="text" class="form-control" id="insumos" name="insumos">
         </div>
-        
-        
+
+
         <div class="form-group col-md-6">
             <label for="pwd">Cantidad:</label>
-            <input type="text" class="form-control" id="cantidad" name="cantidad">
+            <input type="number" class="form-control" id="cantidad" name="cantidad">
         </div>
-        
+
 
         <div class="form-group col-md-12">
             <label for="comentarios">Comentarios</label>
             <textarea name="comentarios" id="comentarios" class="form-control" required></textarea>
         </div>
-        
+
         <div class="form-group col-md-4">
             <label for="pwd">Valor unitario:</label>
-            <input type="text" class="form-control" id="valorUnitario" name="valorUnitario">
+            <input type="number" class="form-control" id="valorUnitario" name="valorUnitario">
         </div>
     </div>
     <div class="form-group col-md-4">
         <label for="pwd">Porcentaje:</label>
-        <input type="text" class="form-control" id="porcentaje" name="porcentaje">
+        <input type="number" class="form-control" id="porcentaje" name="porcentaje">
     </div>
     <div class="form-group col-md-4">
         <label for="pwd">Despacho:</label>
-        <input type="text" class="form-control" id="despacho" name="despacho">
+        <input type="number" class="form-control" id="despacho" name="despacho">
     </div>
     <div class="col-md-12">
 
-        <button type="submit" class="btn btn-success">Agregar</button>
+        <button type="submit" class="btn btn-success" id="btn-agregar">Agregar</button>
     </div>
 </form>

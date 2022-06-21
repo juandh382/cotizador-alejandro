@@ -15,4 +15,4 @@ const CONSULT_QUOTES_VIEW = `${base_url}/views/cotizaciones.php`;
 const ARCHIVES_CONTROLLER = `${base_url}/controllers/ArchivesController.php`;
 const USER_CONTROLLER = `${base_url}/controllers/UserController.php`;
 const QUOTE_CONTROLLER = `${base_url}/controllers/QuoteController.php`;
-const UTILS = `${base_url}/Helpers/Utils.php`;
+const UTILS = `${base_url}/helpers/Utils.php`;
