@@ -27,7 +27,9 @@
         <link href="<?=base_url?>/views/assets/css/style-responsive.css" rel="stylesheet" />
 	<link href="<?=base_url?>/views/assets/css/xcharts.min.css" rel=" stylesheet">	
 
-
+  <?php if (isset($_GET['controller']) && $_GET['controller'] == 'Quote' && isset($_GET['action']) && $_GET['action'] == 'showQuotesCRUD'): ?>
+    <link rel="stylesheet" href="<?=base_url?>/views/assets/css/jd-quotesCrud.css">
+  <?php endif; ?>
 </head>  
   <body style="color: black">
   <!-- container section start -->  

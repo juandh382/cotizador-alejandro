@@ -37,7 +37,7 @@ class Archive
     public function getLastArchiveSaved()
     {
         global $gbd;
-        $sql = 'SELECT id, name, fecha, description, ruta, tipo from archivos ORDER BY id DESC LIMIT 1';
+        $sql = 'SELECT id, name, fecha, hora, description, ruta, tipo from archivos ORDER BY id DESC LIMIT 1';
 
         $res = $gbd->query($sql);
 

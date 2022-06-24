@@ -1,0 +1,14 @@
+/* Utils */
+#btn-cancelar {
+    margin-left: 20px;
+}
+
+.quoteSpreadSheet-icon {
+    width: 50px;
+}
+
+.excel-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}

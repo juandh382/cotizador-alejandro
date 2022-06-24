@@ -19,14 +19,17 @@
             </div>
 
             <?php require_once 'includes/quotesTable.php'; ?>
-            </div>
-            <div class="row mt-5" id="form-container">
-                <div class="col-md-5">
+
+            <div class="row mt-5 col-md-5" id="form-container">
+                <div>
                     <?php require_once 'includes/crudquotesForm.php'; ?>
                 </div>
+            </div>
+            <div class="col-md-5 excel-icon-container">
+                Importar cotizaciones <br>
+                <a href="<?=base_url?>/quoteSpreadSheet.php"><img src="<?=base_url?>/views/assets/img/excel-icon.png" alt="" class="quoteSpreadSheet-icon"></a>
+            </div>
         </section>
-        <div class="text-right">
-        </div>
     </section>
     <!--main content end-->
 </section>

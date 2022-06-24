@@ -14,16 +14,16 @@ class Conexion
          * Produccion
          */
 
-        $dsn = 'mysql:dbname=cst64046_tutoriales;host=127.0.0.1';
-        $usuario = 'cst64046_aleja';
-        $contraseña = 'Orquidea123';
+        // $dsn = 'mysql:dbname=cst64046_tutoriales;host=127.0.0.1';
+        // $usuario = 'cst64046_aleja';
+        // $contraseña = 'Orquidea123';
         
         /**
          * Desarrollo
          */
-        // $dsn = 'mysql:dbname=tutoriales;host=127.0.0.1';
-        // $usuario = 'root';
-        // $contraseña = '';
+        $dsn = 'mysql:dbname=tutoriales;host=127.0.0.1';
+        $usuario = 'root';
+        $contraseña = '';
 
         try {
             $gbd = new PDO($dsn, $usuario, $contraseña);

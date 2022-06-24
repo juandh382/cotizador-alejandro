@@ -2,6 +2,14 @@ const quoteForm = document.querySelector("#quote-form");
 quoteForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(quoteForm);
+  const d = new Date();
+  const seconds =
+    d.getSeconds().toString().length > 1
+      ? d.getSeconds().toString()
+      : "0" + d.getSeconds().toString();
+  const time = `${d.getHours()} : ${d.getMinutes()} : ${seconds}`;
+
+  data.append("hora", time);
   data.append("submit", true);
   fetch(UTILS, {
     method: "POST",
@@ -23,13 +31,14 @@ quoteForm.addEventListener("submit", (e) => {
 async function addRow() {
   const t = $("#tablaAbogados").DataTable();
 
-  const { id, name, fecha, description, ruta, tipo } =
+  const { id, name, fecha, description, ruta, tipo, hora } =
     await getLastArchiveSaved();
   t.row
     .add([
       id,
       name,
       fecha,
+      hora,
       description,
       `<td style="padding-left: 5px;"><a href="${base_url}/views/archive.php?id=${id}" target="_blank">${ruta}</a></td>`,
       tipo,

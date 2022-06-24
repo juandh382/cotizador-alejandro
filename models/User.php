@@ -57,7 +57,7 @@ class User
     function obtenerArchivos()
     {
         global $gbd;
-        $sql = "SELECT id, name, fecha, description, ruta, tipo from archivos";
+        $sql = "SELECT id, name, fecha, hora, description, ruta, tipo from archivos";
         $res = $gbd->query($sql);
 
         if ($res) {

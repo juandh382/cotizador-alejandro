@@ -22,8 +22,10 @@ class Utils
             $nombre = $_POST['nombre'];
             $fecha = $_POST['fecha'];
             $description = $_POST['descripcion'];
+            $hora = $_POST['hora'];
+            
 
-            $sql = "INSERT INTO archivos (name,fecha,description,ruta,tipo,size) VALUES ('$nombre','$fecha','$description','" . $nombrefinal . "','" . $files['fichero']['type'] . "','" . $files['fichero']['size'] . "')";
+            $sql = "INSERT INTO archivos (name,fecha, hora, description,ruta,tipo,size) VALUES ('$nombre','$fecha', '$hora' ,'$description','" . $nombrefinal . "','" . $files['fichero']['type'] . "','" . $files['fichero']['size'] . "')";
 
             $res = $gbd->query($sql);
 

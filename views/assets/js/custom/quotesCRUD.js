@@ -6,13 +6,13 @@ const quoteData = {
   fechaTermino: "",
   insumos: "",
   cantidad: "",
-  comentarios: "",
   valorUnitario: "",
+  valorVenta: "",
   porcentaje: "",
   despacho: "",
-  valorVenta: "",
-  valorGanancia: "",
   total: "",
+  valorGanancia: "",
+  comentarios: "",
 };
 
 // JQuery initiations
@@ -47,23 +47,122 @@ function handlerSubmit(e) {
 
   fillInTheRemainingFields();
 
+  let msg =
+    $("#accion").val() == "modificar"
+      ? "El registro se ha actualizado satisfactoriamente"
+      : "Los datos de la cotización han sido guardados";
+
   sendData();
-  addRow();
-  showMessage();
-  resetForm()
+
+  updateTable($("#accion").val());
+
+  resetForm();
+  resetQuoteData();
+
+  Swal.fire("Exito!", msg, "success");
 }
 
-function showMessage() {
-
+function resetQuoteData() {
+  Object.keys(quoteData).forEach((key) => (quoteData[key] = ""));
 }
 
-function addRow() {
+function updateTable(action) {
+  action == "agregar" ? addRow() : updateRow();
+}
 
+function updateRow() {
+  const row = $(`#${quoteData.idCotizacion}`).parent().parent()[0];
+  const values = Object.values(quoteData).slice(
+    0,
+    Object.values(quoteData).length - 2
+  );
+
+  const dataTable = $("#tablaCotizaciones").DataTable();
+
+  values.unshift(quoteData["idCotizacion"]);
+
+  values.push(
+    `<td style="padding-left: 5px;">
+        <a href="#" class="modificar" id="${quoteData.idCotizacion}">
+          <img src="${base_url}/views/assets/img/edit.ico" width="40">
+        </a>
+      </td>`,
+    `
+      <td style="padding-left: 5px;">
+        <a href="${base_url}/?controller=User&action=index&accion=eliminar&amp;idUsuario=${quoteData.idCotizacion}">
+          <img src="${base_url}/views/assets/img/delete.png" width="40">
+        </a>
+      </td>`
+  );
+
+  dataTable.row(row).data(values).draw(false);
+
+  $(`#${quoteData.idCotizacion}`).click(handlerClickEditButton);
+}
+
+async function addRow() {
+  const t = $("#tablaCotizaciones").DataTable();
+
+  const data = await getLastQuoteSaved();
+  t.row
+    .add([
+      data.idCotizacion,
+      data.empresa,
+      data.idCotizacion2,
+      data.fechaInicio,
+      data.fechaTermino,
+      data.insumos,
+      data.cantidad,
+      data.valorUnitario,
+      data.valorVenta,
+      data.porcentaje,
+      data.despacho,
+      data.total,
+      data.valorGanancia,
+
+      `<td style="padding-left: 5px;">
+        <a href="#" class="modificar" id="${data.idCotizacion}">
+          <img src="${base_url}/views/assets/img/edit.ico" width="40">
+        </a>
+      </td>`,
+      `
+      <td style="padding-left: 5px;">
+        <a href="${base_url}/?controller=Quote&action=index&accion=eliminar&idUsuario=${data.idCotizacion}">
+          <img src="${base_url}/views/assets/img/delete.png" width="40">
+        </a>
+      </td>`,
+    ])
+    .draw(false);
+
+  $(`#${data.idCotizacion}`).click(handlerClickEditButton);
+}
+
+async function getLastQuoteSaved() {
+  const formData = new FormData();
+  formData.append("getLastRegisterSaved", true);
+
+  try {
+    const response = await fetch(QUOTE_CONTROLLER, {
+      body: formData,
+      method: "post",
+    });
+    const { result } = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function resetForm() {
-  // document.querySelector('#quote-form').reset();
+  document.querySelector("#quote-form").reset();
 
+  $("#accion").val("agregar");
+  $("#idCotizacion").val("");
+
+  if (document.querySelector("#btn-cancelar")) {
+    document.querySelector("#btn-cancelar").remove();
+  }
 }
 
 async function sendData() {
@@ -72,8 +171,11 @@ async function sendData() {
     formData.append(key, quoteData[key]);
   });
 
-  formData.append('accion', document.querySelector('#accion').value)
-  formData.append('idCotizacion', document.querySelector('#idCotizacion').value)
+  formData.append("accion", document.querySelector("#accion").value);
+  formData.append(
+    "idCotizacion",
+    document.querySelector("#idCotizacion").value
+  );
 
   try {
     const response = await fetch(QUOTE_CONTROLLER, {
@@ -89,36 +191,37 @@ async function sendData() {
 }
 
 function fillInTheRemainingFields() {
-  quoteData.valorGanancia = calculateEarnedValue(
-    quoteData.cantidad,
-    quoteData.valorUnitario,
-    quoteData.porcentaje
-  );
+  quoteData.valorVenta = calculateSaleValue();
+  quoteData.total = calculateTotal();
+  quoteData.valorGanancia = calculateEarnedValue();
+}
 
-  quoteData.total = calculateTotal(
-    quoteData.cantidad,
-    quoteData.valorUnitario,
-    quoteData.porcentaje
-  );
+function showCancelButton() {
+  if (!document.querySelector("#btn-cancelar")) {
+    const cancelBtn = document.createElement("button");
+    cancelBtn.id = "btn-cancelar";
+    cancelBtn.classList.add("btn", "btn-danger");
+    cancelBtn.setAttribute("type", "button");
+    cancelBtn.textContent = "Cancelar";
 
-  quoteData.valorVenta = calculateSaleValue(
-    quoteData.valorUnitario,
-    quoteData.porcentaje
-  );
+    cancelBtn.addEventListener("click", resetForm);
+
+    document.querySelector("#btn-agregar").parentElement.append(cancelBtn);
+  }
 }
 
 function handlerClickEditButton(e) {
   e.preventDefault();
   window.scroll(0, window.outerHeight);
-
+  showCancelButton();
   $.ajax({
     type: "GET",
     url: `${QUOTE_CONTROLLER}?idCotizacion=${this.id}"&getQuoteById="true`,
     success: function (data) {
       const { result } = JSON.parse(data);
 
-      Object.keys(result).forEach(key => {
-        quoteData[key] = result[key]
+      Object.keys(result).forEach((key) => {
+        quoteData[key] = result[key];
       });
 
       fillInTheRemainingFields();
@@ -139,15 +242,14 @@ function handlerClickEditButton(e) {
   });
 }
 
-function calculateSaleValue(unitValue, percentage) {
-  return (unitValue * percentage) / 100;
+function calculateSaleValue() {
+  return (Math.pow(quoteData.valorUnitario, 2) * quoteData.porcentaje) / 100;
 }
 
-function calculateTotal(amount, unitValue, percentage) {
-  return (unitValue * amount * percentage) / 100;
+function calculateTotal() {
+  return quoteData.valorVenta * quoteData.cantidad;
 }
 
-function calculateEarnedValue(amount, unitValue, percentage) {
-  return amount * unitValue * (percentage / 100 - 1);
+function calculateEarnedValue() {
+  return quoteData.cantidad * (quoteData.valorVenta - quoteData.valorUnitario);
 }
-

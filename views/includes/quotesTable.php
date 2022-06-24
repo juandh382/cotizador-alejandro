@@ -40,7 +40,7 @@
                 </a>
             </td>
             <td style='padding-left: 5px;'>
-                <a href='../controller/QuoteController.php?accion=eliminar&idCotizacion=<?=$value['idCotizacion']?>'>
+                <a href='<?=base_url?>/Quote/ShowQuotesCRUD&accion=eliminar&idCotizacion=<?=$value['idCotizacion']?>'>
                     <img src='<?=base_url?>/views/assets/img/delete.png' width='40'>
                 </a>
             </td>
