@@ -35,7 +35,7 @@ function handlerInput(e) {
   quoteData[e.target.getAttribute("name")] = e.target.value;
 }
 
-function handlerSubmit(e) {
+async function handlerSubmit(e) {
   e.preventDefault();
   if (
     quoteData.cantidad == "" ||
@@ -52,9 +52,9 @@ function handlerSubmit(e) {
       ? "El registro se ha actualizado satisfactoriamente"
       : "Los datos de la cotización han sido guardados";
 
-  sendData();
+  await sendData();
 
-  updateTable($("#accion").val());
+  await updateTable($("#accion").val());
 
   resetForm();
   resetQuoteData();
