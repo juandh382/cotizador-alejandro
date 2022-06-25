@@ -243,7 +243,7 @@ function handlerClickEditButton(e) {
 }
 
 function calculateSaleValue() {
-  return (Math.pow(quoteData.valorUnitario, 2) * quoteData.porcentaje) / 100;
+  return quoteData.valorUnitario * quoteData.porcentaje;
 }
 
 function calculateTotal() {

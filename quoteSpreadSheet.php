@@ -30,31 +30,33 @@ $cotizaciones = $cotizacion->obtenerCotizaciones();
 $hojaActiva->setCellValue('A' . 1, 'empresa');
 $hojaActiva->setCellValue('B' . 1, 'idCotizacion');
 $hojaActiva->setCellValue('C' . 1, 'fechaInicio');
-$hojaActiva->setCellValue('C' . 1, 'insumos');
-$hojaActiva->setCellValue('D' . 1, 'comentarios');
-$hojaActiva->setCellValue('E' . 1, 'cantidad');
-$hojaActiva->setCellValue('F' . 1, 'valorUnitario');
-$hojaActiva->setCellValue('G' . 1, 'valorVenta');
-$hojaActiva->setCellValue('H' . 1, 'porcentaje');
-$hojaActiva->setCellValue('I' . 1, 'despacho');
-$hojaActiva->setCellValue('J' . 1, 'total');
+$hojaActiva->setCellValue('D' . 1, 'fechaTermino');
+$hojaActiva->setCellValue('E' . 1, 'insumos');
+$hojaActiva->setCellValue('F' . 1, 'comentarios');
+$hojaActiva->setCellValue('G' . 1, 'cantidad');
+$hojaActiva->setCellValue('H' . 1, 'valorUnitario');
+$hojaActiva->setCellValue('I' . 1, 'valorVenta');
+$hojaActiva->setCellValue('J' . 1, 'porcentaje');
+$hojaActiva->setCellValue('K' . 1, 'despacho');
+$hojaActiva->setCellValue('L' . 1, 'total');
 
 
 $index = 2;
 
 foreach ($cotizaciones as $registro) {
-
     $hojaActiva->setCellValue('A' . $index, $registro['empresa']);
     $hojaActiva->setCellValue('B' . $index, $registro['idCotizacion']);
     $hojaActiva->setCellValue('C' . $index, $registro['fechaInicio']);
-    $hojaActiva->setCellValue('C' . $index, $registro['insumos']);
-    $hojaActiva->setCellValue('D' . $index, $registro['comentarios']);
-    $hojaActiva->setCellValue('E' . $index, $registro['cantidad']);
-    $hojaActiva->setCellValue('F' . $index, $registro['valorUnitario']);
-    $hojaActiva->setCellValue('G' . $index, $registro['valorVenta']);
-    $hojaActiva->setCellValue('H' . $index, $registro['porcentaje']);
-    $hojaActiva->setCellValue('I' . $index, $registro['despacho']);
-    $hojaActiva->setCellValue('J' . $index, $registro['total']);
+    $hojaActiva->setCellValue('D' . $index, $registro['fechaTermino']);
+    $hojaActiva->setCellValue('E' . $index, $registro['insumos']);
+    $hojaActiva->setCellValue('F' . $index, $registro['comentarios']);
+    $hojaActiva->setCellValue('G' . $index, $registro['cantidad']);
+    $hojaActiva->setCellValue('H' . $index, $registro['valorUnitario']);
+    $hojaActiva->setCellValue('I' . $index, $registro['valorVenta']);
+    $hojaActiva->setCellValue('J' . $index, $registro['porcentaje']);
+    $hojaActiva->setCellValue('K' . $index, $registro['despacho']);
+    $hojaActiva->setCellValue('L' . $index, $registro['total']);
+
     $index++;
 }
 
